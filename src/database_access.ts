@@ -18,14 +18,23 @@ export interface BookDatabaseAccessor {
   books: Collection<Book>
 }
 
-export function getBookDatabase (): BookDatabaseAccessor {
-  const database = client.db((global as any).MONGO_URI !== undefined ? Math.floor(Math.random() * 100000).toPrecision() : 'mcmasterful-books')
-  const books = database.collection<Book>('books')
-
+export function getBookDatabase (dbName?: string): BookDatabaseAccessor {
+  const database = client.db(dbName ?? Math.floor(Math.random() * 
+1000000).toPrecision().toString())
   return {
     database,
     books
   }
+}
+
+export interface AppWarehouseDatabaseState {
+warehouse: WarehouseData
+}
+
+export async function getDefaultWarehouseDatabase (name?: string):
+Promise<WarehouseData> {
+const db = await getWarehouseDatabase(name)
+return new DatabaseWarehouse(db)
 }
 
 if (import.meta.vitest !== undefined) {

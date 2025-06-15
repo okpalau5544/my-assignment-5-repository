@@ -2,12 +2,14 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
   "name": "Node.js & TypeScript",
+  "workspaceFolder": "/workspaces/my-assignment-5-repository",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "dockerComposeFile": [
     "docker-compose.yml"
   ],
   "service": "dev",
   "features": {
+    "ghcr.io/devcontainers/features/java": {},
     "ghcr.io/mcmastercce/bvd-103-mcmasterful-books/mcmasterful-books:0.1.5": {}
   },
   // Uncomment workspaceFolder if the repo has been cloned to your local machine

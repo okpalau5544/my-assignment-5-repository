@@ -4,6 +4,8 @@
   "description": "This is a template repository for the first assignment in BVD 103 at McMaster Continuing Education.",
   "main": "index.ts",
   "scripts": {
+    "tsoa": "tsoa spec && tsoa routes",
+    "dev": "ts-node src/server.ts",
     "start-server": "tsx ./index.ts",
     "lint": "eslint ./**/*.ts",
     "fix-lint": "eslint --fix ./**/*.ts",
@@ -16,10 +18,16 @@
   "license": "ISC",
   "dependencies": {
     "@koa/cors": "^5.0.0",
-    "koa": "^2.15.2",
+    "@koa/router": "13.1.0",
+    "koa": "^2.16.1",
+    "koa-bodyparser": "4.4.1",
     "koa-qs": "^3.0.0",
+    "koa-router": "^13.0.1",
     "koa-zod-router": "^2.2.0",
+    "koa2-swagger-ui": "5.11.0",
     "mongodb": "^6.5.0",
+    "swagger-ui-koa": "^0.0.1",
+    "tsoa": "^6.6.0",
     "uuid": "^9.0.1",
     "zod": "^3.22.4"
   },
@@ -27,6 +35,8 @@
     "@types/koa": "~2.15.0",
     "@types/koa__cors": "~5.0.0",
     "@types/koa-qs": "~2.0.3",
+    "@types/koa-router": "^7.4.8",
+    "@types/node": "^24.0.1",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "eslint": "^8.57.0",
     "eslint-config-standard-with-typescript": "^43.0.1",
@@ -35,6 +45,8 @@
     "eslint-plugin-promise": "^6.1.1",
     "mongodb-memory-server": "^9.1.8",
     "typescript": "^5.4.3",
-    "vitest": "^1.4.0"
+    "vitest": "^1.4.0",
+    "rollup-plugin": "rollup -c",
+    "vite-plugin-vue": "vite build"
   }
 }
