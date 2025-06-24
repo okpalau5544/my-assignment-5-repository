@@ -19,6 +19,7 @@
   "dependencies": {
     "@koa/cors": "^5.0.0",
     "@koa/router": "13.1.0",
+    "foo": "^0.0.7",
     "koa": "^2.16.1",
     "koa-bodyparser": "4.4.1",
     "koa-qs": "^3.0.0",
@@ -47,5 +48,5 @@
     "typescript": "^5.4.3",
     "vite": "^6.3.5",
     "vitest": "^1.6.1"
- }
+  }
 }

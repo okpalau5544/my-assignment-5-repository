@@ -8,7 +8,7 @@
     "module": "es2022",
     "target": "es2022",
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": ".",
 
     "strict": true,
     "esModuleInterop": true,
@@ -23,6 +23,6 @@
     ]
   },
   "include": [
-    "src/**/*.ts", "../src/vitest.config.ts",
+    "src/**/*.ts", "../vitest.config.ts", "adapter/**/*", "./src/index.ts", "tests/**/*",
   ],
 }

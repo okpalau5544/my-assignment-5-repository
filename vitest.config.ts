@@ -5,7 +5,7 @@ export default defineConfig({
     // Remove the non-existent plugins for now
   ],
   test: {
-    includeSource: ['src/**/*.{js,ts}'],
+    includeSource: ['src/**/*.{js,ts}', 'adapter/**/*', 'tests/**/*'],
     setupFiles: ['./database_test_setup.ts']
   }
 })

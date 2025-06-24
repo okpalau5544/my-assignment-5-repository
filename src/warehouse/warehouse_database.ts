@@ -10,7 +10,7 @@ export interface WarehouseDatabaseAccessor {
   orders: Collection<{ books: Record<BookID, number> }>
 }
 
-export async function getWarehouseDatabase (): Promise<WarehouseDatabaseAccessor> {
+export async function getWarehouseDatabase (name: string | undefined): Promise<WarehouseDatabaseAccessor> {
   const database = client.db((global as any).MONGO_URI !== undefined ? Math.floor(Math.random() * 100000).toPrecision() : 'mcmasterful-warehouse')
   const books = database.collection<{ book: BookID, shelf: ShelfId, count: number }>('books')
   await books.createIndex({ book: 1, shelf: 1 }, { unique: true })
@@ -82,7 +82,7 @@ if (import.meta.vitest !== undefined) {
 
   test('placing a book adds the book to the database', async () => {
     const memData = new InMemoryWarehouse()
-    const dbData = new DatabaseWarehouse(await getWarehouseDatabase())
+    const dbData = new DatabaseWarehouse(await getWarehouseDatabase(undefined))
 
     const book = generateId<BookID>()
     const shelf = 'my_shelf'
@@ -97,7 +97,7 @@ if (import.meta.vitest !== undefined) {
 
   test('getting a non existant book/shelf combination returns a zero', async () => {
     const memData = new InMemoryWarehouse()
-    const dbData = new DatabaseWarehouse(await getWarehouseDatabase())
+    const dbData = new DatabaseWarehouse(await getWarehouseDatabase(undefined))
 
     const [memResult, dbResult] = await Promise.all([memData.getCopiesOnShelf('book', 'shelf'), dbData.getCopiesOnShelf('book', 'shelf')])
 
@@ -106,7 +106,7 @@ if (import.meta.vitest !== undefined) {
   })
 
   test('get all the copies of an existing book', async () => {
-    const dbPromise = getWarehouseDatabase()
+    const dbPromise = getWarehouseDatabase(undefined)
     const db = await dbPromise
 
     const bookId = generateId<BookID>()
@@ -125,7 +125,7 @@ if (import.meta.vitest !== undefined) {
   })
 
   test('order crud works as expected', async () => {
-    const db = await getWarehouseDatabase()
+    const db = await getWarehouseDatabase(undefined)
     const memData = new InMemoryWarehouse()
     const dbData = new DatabaseWarehouse(db)
 
@@ -155,6 +155,6 @@ if (import.meta.vitest !== undefined) {
 }
 
 export async function getDefaultWarehouseDatabase (): Promise<WarehouseData> {
-  const db = await getWarehouseDatabase()
+  const db = await getWarehouseDatabase(undefined)
   return new DatabaseWarehouse(db)
 }

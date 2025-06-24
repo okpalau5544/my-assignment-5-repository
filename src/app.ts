@@ -1,7 +1,7 @@
 import koa from 'koa'
 import Router from 'koa-router'
 import bodyParser from 'koa-bodyparser'
-import { registerRoutes } from './routes/registerRoutes'
+import { registerRoutrs } from './routes/registerRoutes'
 import swaggerUi from 'swagger-ui-koa'
 import * as swaggerDocument from './swagger.json'
 

@@ -1,6 +1,8 @@
 import { type Collection, type Db, MongoClient } from 'mongodb'
 // We are importing the book type here, so we can keep our types consistent with the front end
-import { type Book } from '../adapter/assignment-3'
+import { type Book } from '../adapter/assignment-4'
+import { type WarehouseData } from './warehouse/warehouse_data'
+import { getWarehouseDatabase, DatabaseWarehouse } from './warehouse/warehouse_database'
 
 // This is the connection string for the mongo database in our docker compose file
 // We're using process.env to detect if a different mongo uri is set, primarily for testing purpuses
@@ -19,8 +21,9 @@ export interface BookDatabaseAccessor {
 }
 
 export function getBookDatabase (dbName?: string): BookDatabaseAccessor {
-  const database = client.db(dbName ?? Math.floor(Math.random() * 
+  const database = client.db(dbName ?? Math.floor(Math.random() *
 1000000).toPrecision().toString())
+  const books = database.collection<Book>('books')
   return {
     database,
     books
@@ -28,13 +31,13 @@ export function getBookDatabase (dbName?: string): BookDatabaseAccessor {
 }
 
 export interface AppWarehouseDatabaseState {
-warehouse: WarehouseData
+  warehouse: WarehouseData
 }
 
 export async function getDefaultWarehouseDatabase (name?: string):
 Promise<WarehouseData> {
-const db = await getWarehouseDatabase(name)
-return new DatabaseWarehouse(db)
+  const db = await getWarehouseDatabase(name)
+  return new DatabaseWarehouse(db)
 }
 
 if (import.meta.vitest !== undefined) {
