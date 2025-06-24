@@ -45,8 +45,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "mongodb-memory-server": "^9.1.8",
     "typescript": "^5.4.3",
-    "vitest": "^1.4.0",
-    "rollup-plugin": "rollup -c",
-    "vite-plugin-vue": "vite build"
-  }
+    "vite": "^6.3.5",
+    "vitest": "^1.6.1"
+ }
 }
