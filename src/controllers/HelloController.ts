@@ -12,6 +12,7 @@ export class WarehouseRoutes extends Controller {
     ): Promise<Record<string, number>> {
     const ctx: ParameterizedContext<AppWarehouseDatabaseState, DefaultContext> = request.ctx
     const data = ctx.state.warehouse
+    // Return something meaningful. Example:
+    return { [book]: data[book] }
     }
-}
 }
