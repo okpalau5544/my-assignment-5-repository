@@ -23,6 +23,6 @@
     ]
   },
   "include": [
-    "src/**/*.ts", "../vitest.config.ts", "adapter/**/*", "./src/index.ts", "tests/**/*",
+    "src/**/*.ts", "vitest.config.ts", "adapter/**/*", "./src/index.ts", "tests/**/*", "vitest-openapi-plugin.ts",
   ],
 }

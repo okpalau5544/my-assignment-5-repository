@@ -1,4 +1,4 @@
-import { Get, Route, Tags, Controller, Path } from 'tsoa'
+import { Get, Route, Controller, Path, Request } from 'tsoa'
 import { type ParameterizedContext, type DefaultContext, type Request as koaRequest } from 'koa'
 import { BookID } from '../../adapter/assignment-2'
 import { type AppWarehouseDatabaseState } from '../database_access'
@@ -13,6 +13,7 @@ export class WarehouseRoutes extends Controller {
     const ctx: ParameterizedContext<AppWarehouseDatabaseState, DefaultContext> = request.ctx
     const data = ctx.state.warehouse
     // Return something meaningful. Example:
-    return { [book]: data[book] }
+    // Assuming data.books is a Record<BookID, number> containing book counts
+    return { [book]: data.books[book as keyof typeof data.books] }
   }
 }

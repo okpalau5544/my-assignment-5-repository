@@ -8,8 +8,8 @@ import * as swaggerDocument from './swagger.json'
 const app = new Koa()
 const router = new Router()
 
-app.use(swaggerUi.serve)
-app.use(swaggerUi.setup(swaggerDocument))
+app.use(swaggerUi.serve as Koa.Middleware)
+app.use(swaggerUi.setup(swaggerDocument) as Koa.Middleware)
 app.use(bodyParser())
 registerRoutes(router)
 app.use(router.routes()).use(router.allowedMethods())
