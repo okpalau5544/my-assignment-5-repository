@@ -13,7 +13,8 @@ export class WarehouseRoutes extends Controller {
     const ctx: ParameterizedContext<AppWarehouseDatabaseState, DefaultContext> = request.ctx
     const data = ctx.state.warehouse
     // Return something meaningful. Example:
+    // Assuming data is a Record<BookID, number> containing book counts
     // Assuming data.books is a Record<BookID, number> containing book counts
-    return { [book]: data.books[book as keyof typeof data.books] }
+    return { [book]: data.books[book] }
   }
 }

@@ -4,6 +4,7 @@ import { type OrderId, type ShelfId } from '../../adapter/assignment-4'
 import { getDefaultWarehouseDatabase } from './warehouse_database'
 
 export interface WarehouseData {
+  books: any
   placeBookOnShelf: (bookId: BookID, shelf: ShelfId, count: number) => Promise<void>
   getCopiesOnShelf: (bookId: BookID, shelf: ShelfId) => Promise<number>
   getCopies: (bookId: BookID) => Promise<Record<ShelfId, number>>

@@ -23,6 +23,7 @@
     ]
   },
   "include": [
-    "src/**/*.ts", "vitest.config.ts", "adapter/**/*", "./src/index.ts", "tests/**/*", "vitest-openapi-plugin.ts",
+    "src/**/*.ts", "vitest.config.ts", "adapter/**/*", "./src/index.ts", "tests/**/*", "vitest-openapi-plugin.ts", "registerRoutes.ts",
   ],
+  "declare module": "../../generated/routes",
 }
