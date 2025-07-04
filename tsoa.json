@@ -5,13 +5,13 @@
         "src/controllers/*.ts"
     ],
     "spec": {
-        "outputDirectory": "src",
+        "outputDirectory": "build",
         "specVersion": 3,
         "basePath": "/api",
         "schemes": [ "http" ],
         "host": "localhost:3000"
     },
     "routes": {
-        "routesDir": "src/routes"
+        "routesDir": "build"
     }
 }
